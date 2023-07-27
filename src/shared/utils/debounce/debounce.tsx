@@ -1,4 +1,3 @@
-// utils/debounce.ts
 export function debounce<T extends unknown[]>(
   func: (...args: T) => void,
   delay: number

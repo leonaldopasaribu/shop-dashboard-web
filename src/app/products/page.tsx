@@ -61,9 +61,9 @@ export default function Products() {
     fetchProductByName(searchQuery);
   }, [searchQuery, skip]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
   return (
     <div>

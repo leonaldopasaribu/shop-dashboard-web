@@ -30,8 +30,6 @@ export const useProduct = () => {
   }
 
   async function fetchProductByName(name: string): Promise<void> {
-    dispatch(markAsLoading());
-
     await fetch(`${baseUrl}/products/search?q=${name}`)
       .then((response) => response.json())
       .then((data) => {
