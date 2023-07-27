@@ -15,10 +15,12 @@ export const useProduct = () => {
 
   const dispatch = useDispatch();
 
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
   async function fetchProducts(): Promise<void> {
     dispatch(markAsLoading());
 
-    await fetch("https://dummyjson.com/products")
+    await fetch(`${baseUrl}/products`)
       .then((response) => response.json())
       .then((data) => {
         dispatch(populateData(data));
