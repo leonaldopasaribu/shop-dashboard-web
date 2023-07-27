@@ -3,23 +3,13 @@
 import React, { useEffect, useState } from "react";
 
 import { ProductsSearch } from "./components/products-search";
+import { ProductsTable } from "./components/products-table";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/shared/components/table";
 import { LoadingScreen } from "@/shared/components/loading-screen";
 import { Pagination } from "@/shared/components/pagination";
 
-import { formatCurrency } from "@/shared/utils/format-currency";
-
 import { useProduct } from "@/shared/services/products.hook";
 import { useCalculatePagination } from "@/shared/services/pagination.hook";
-import { ProductsTable } from "./components/products-table";
 
 export default function Products() {
   const [page, setPage] = useState<number>(1);
