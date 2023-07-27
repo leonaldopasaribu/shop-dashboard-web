@@ -1,4 +1,6 @@
-import { ReactNode, createContext } from "react";
+'use client'
+
+import { ReactNode } from "react";
 
 import { AppContext } from "./app-context";
 

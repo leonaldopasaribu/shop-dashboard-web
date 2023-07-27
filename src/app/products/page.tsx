@@ -1,3 +1,7 @@
+"use client";
+
+import React, { useEffect } from "react";
+
 import {
   Table,
   TableBody,
@@ -6,10 +10,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/table";
-
-import { PRODUCTS } from "@/shared/constants/products";
+import { useProduct } from "@/hooks/products.hook";
 
 export default function Products() {
+  const { fetchProducts, products } = useProduct();
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <Table className="w-full">
       <TableHeader>
@@ -23,10 +32,10 @@ export default function Products() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {PRODUCTS.map((product) => (
+        {products.map((product) => (
           <TableRow key={product.id} className="capitalize">
             <TableCell>{product.id}</TableCell>
-            <TableCell className="font-medium">{product.name}</TableCell>
+            <TableCell className="font-medium">{product.title}</TableCell>
             <TableCell>{product.brand}</TableCell>
             <TableCell>{product.price}</TableCell>
             <TableCell>{product.stock}</TableCell>

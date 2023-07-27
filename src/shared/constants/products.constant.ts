@@ -1,11 +1,4 @@
-interface Product {
-  brand: string;
-  category: string;
-  id: number;
-  name: string;
-  price: number;
-  stock: number;
-}
+import { Product } from "../models/product.model";
 
 export const PRODUCTS: Product[] = [
   {
