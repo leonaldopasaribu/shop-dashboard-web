@@ -12,10 +12,12 @@ import {
 } from "@/shared/components/table";
 import { LoadingScreen } from "@/shared/components/loading-screen";
 import { Pagination } from "@/shared/components/pagination";
+import { SearchInput } from "@/shared/components/search-input";
 
 import { useProduct } from "@/hooks/products.hook";
 import { useCalculatePagination } from "@/hooks/pagination.hook";
-import { SearchInput } from "@/shared/components/search-input";
+
+import { formatCurrency } from "@/shared/utils/format-currency";
 
 export default function Products() {
   const [page, setPage] = useState<number>(1);
@@ -90,7 +92,7 @@ export default function Products() {
               <TableCell>{product.id}</TableCell>
               <TableCell className="font-medium">{product.title}</TableCell>
               <TableCell>{product.brand}</TableCell>
-              <TableCell>{product.price}</TableCell>
+              <TableCell>{formatCurrency(product.price)}</TableCell>
               <TableCell>{product.stock}</TableCell>
               <TableCell>{product.category}</TableCell>
             </TableRow>
