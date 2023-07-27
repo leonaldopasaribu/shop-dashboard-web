@@ -21,8 +21,10 @@ export const Pagination = ({
     handleNextPage();
   }
 
-  const isButtonPreviousDisabled: boolean = currentPage === 1;
-  const isButtonNextDisabled: boolean = currentPage === totalPage;
+  const isButtonPreviousDisabled: boolean =
+    currentPage === 1 || isNaN(currentPage);
+  const isButtonNextDisabled: boolean =
+    currentPage === totalPage || isNaN(currentPage);
 
   return (
     <div className="flex justify-end">
@@ -40,16 +42,17 @@ export const Pagination = ({
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M13 5H1m0 0 4 4M1 5l4-4"
           />
         </svg>
         Prev
       </Button>
       <p className="mr-3 flex items-center text-sm">
-        Page {currentPage}/{totalPage}
+        Page {isNaN(currentPage) ? 0 : currentPage}/
+        {isNaN(totalPage) ? 0 : totalPage}
       </p>
       <Button
         onClick={onClickButtonNext}
@@ -66,9 +69,9 @@ export const Pagination = ({
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M1 5h12m0 0L9 1m4 4L9 9"
           />
         </svg>

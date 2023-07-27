@@ -1,4 +1,4 @@
-export const Loading = () => {
+export const LoadingScreen = () => {
   return (
     <div className="h-screen ">
       <div className="flex justify-center items-center h-full" role="status" >
@@ -24,4 +24,4 @@ export const Loading = () => {
   );
 };
 
-export default Loading;
+export default LoadingScreen;

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Table,
@@ -10,9 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/table";
-import { Loading } from "@/shared/components/loading";
+import { LoadingScreen } from "@/shared/components/loading-screen";
 import { Pagination } from "@/shared/components/pagination";
-import { Input } from "@/shared/components/input";
 
 import { useProduct } from "@/hooks/products.hook";
 import { useCalculatePagination } from "@/hooks/pagination.hook";
@@ -58,12 +57,15 @@ export default function Products() {
 
   useEffect(() => {
     fetchProducts(skip);
-    fetchProductByName(searchQuery);
-  }, [searchQuery, skip]);
+  }, [skip]);
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
+  useEffect(() => {
+    fetchProductByName(searchQuery);
+  }, [searchQuery]);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div>
