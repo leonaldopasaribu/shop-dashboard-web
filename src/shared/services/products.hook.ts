@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
+import { FETCH_LIMIT } from "../constants/limit.constant";
+
 import { RootState } from "@/store";
 
 import {
@@ -19,7 +21,7 @@ export const useProduct = () => {
   async function fetchProducts(skip: number): Promise<void> {
     dispatch(markAsLoading());
 
-    await fetch(`${baseUrl}/products?limit=10&skip=${skip}`)
+    await fetch(`${baseUrl}/products?limit=${FETCH_LIMIT}&skip=${skip}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch(populateData(data));
@@ -30,7 +32,7 @@ export const useProduct = () => {
   }
 
   async function fetchProductByName(name: string): Promise<void> {
-    await fetch(`${baseUrl}/products/search?q=${name}`)
+    await fetch(`${baseUrl}/products/search?q=${name}&limit=${FETCH_LIMIT}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch(populateData(data));
