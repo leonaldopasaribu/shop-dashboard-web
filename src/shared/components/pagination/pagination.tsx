@@ -1,9 +1,35 @@
-export const Pagination = () => {
+import { Button } from "../button";
+
+interface PaginationProps {
+  currentPage: number;
+  totalPage: number;
+  handlePreviousPage: () => void;
+  handleNextPage: () => void;
+}
+
+export const Pagination = ({
+  currentPage,
+  totalPage,
+  handlePreviousPage,
+  handleNextPage,
+}: PaginationProps) => {
+  function onClickButtonPrevious(): void {
+    handlePreviousPage();
+  }
+
+  function onClickButtonNext(): void {
+    handleNextPage();
+  }
+
+  const isButtonPreviousDisabled: boolean = currentPage === 1;
+  const isButtonNextDisabled: boolean = currentPage === totalPage;
+
   return (
     <div className="flex justify-end">
-      <a
-        href="#"
+      <Button
+        onClick={onClickButtonPrevious}
         className="flex items-center justify-center px-3 h-8 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        disabled={isButtonPreviousDisabled}
       >
         <svg
           className="w-3.5 h-3.5 mr-2"
@@ -21,10 +47,14 @@ export const Pagination = () => {
           />
         </svg>
         Prev
-      </a>
-      <a
-        href="#"
+      </Button>
+      <p className="mr-3 flex items-center text-sm">
+        Page {currentPage}/{totalPage}
+      </p>
+      <Button
+        onClick={onClickButtonNext}
         className="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        disabled={isButtonNextDisabled}
       >
         Next
         <svg
@@ -42,7 +72,7 @@ export const Pagination = () => {
             d="M1 5h12m0 0L9 1m4 4L9 9"
           />
         </svg>
-      </a>
+      </Button>
     </div>
   );
 };

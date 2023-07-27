@@ -9,18 +9,17 @@ import {
 } from "@/store/reducers/products-reducer";
 
 export const useProduct = () => {
-  const { products, isLoading, isError, errorMessage } = useSelector(
-    (state: RootState) => state.product
-  );
+  const { products, isLoading, isError, errorMessage, total, limit } =
+    useSelector((state: RootState) => state.product);
 
   const dispatch = useDispatch();
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  async function fetchProducts(): Promise<void> {
+  async function fetchProducts(skip: number): Promise<void> {
     dispatch(markAsLoading());
 
-    await fetch(`${baseUrl}/products`)
+    await fetch(`${baseUrl}/products?limit=10&skip=${skip}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch(populateData(data));
@@ -36,5 +35,7 @@ export const useProduct = () => {
     products,
     isError,
     errorMessage,
+    total,
+    limit,
   };
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Table,
@@ -11,16 +11,41 @@ import {
   TableRow,
 } from "@/shared/components/table";
 import { Loading } from "@/shared/components/loading";
-
-import { useProduct } from "@/hooks/products.hook";
 import { Pagination } from "@/shared/components/pagination";
 
+import { useProduct } from "@/hooks/products.hook";
+import { useCalculatePagination } from "@/hooks/pagination.hook";
+import { LIMIT } from "@/shared/constants/limit.constant";
+
 export default function Products() {
-  const { fetchProducts, isLoading, products } = useProduct();
+  const [page, setPage] = useState<number>(1);
+  const [skip, setSkip] = useState<number>(0);
+
+  const { fetchProducts, isLoading, products, total, limit } = useProduct();
+
+  const paginationData = {
+    totalProducts: total,
+    limit: limit,
+  };
+
+  const { currentPage, totalPage } = useCalculatePagination(
+    paginationData,
+    page
+  );
+
+  function handlePreviousPage(): void {
+    setPage(page - 1);
+    setSkip(skip - limit);
+  }
+
+  function handleNextPage(): void {
+    setPage(page + 1);
+    setSkip(skip + limit);
+  }
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts(skip);
+  }, [skip]);
 
   if (isLoading) {
     return <Loading />;
@@ -53,8 +78,13 @@ export default function Products() {
         </TableBody>
       </Table>
 
-      <div>
-        <Pagination />
+      <div className="mt-2">
+        <Pagination
+          currentPage={currentPage}
+          totalPage={totalPage}
+          handlePreviousPage={handlePreviousPage}
+          handleNextPage={handleNextPage}
+        />
       </div>
     </div>
   );
