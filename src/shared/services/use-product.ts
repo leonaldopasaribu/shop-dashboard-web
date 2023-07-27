@@ -7,7 +7,7 @@ import { RootState } from "@/store";
 import {
   markAsError,
   markAsLoading,
-  populateData,
+  populateProducts,
 } from "@/store/reducers/products-reducer";
 
 export const useProduct = () => {
@@ -24,7 +24,7 @@ export const useProduct = () => {
     await fetch(`${baseUrl}/products?limit=${FETCH_LIMIT}&skip=${skip}`)
       .then((response) => response.json())
       .then((data) => {
-        dispatch(populateData(data));
+        dispatch(populateProducts(data));
       })
       .catch((error) => {
         dispatch(markAsError(error.message));
@@ -35,7 +35,20 @@ export const useProduct = () => {
     await fetch(`${baseUrl}/products/search?q=${name}&limit=${FETCH_LIMIT}`)
       .then((response) => response.json())
       .then((data) => {
-        dispatch(populateData(data));
+        dispatch(populateProducts(data));
+      })
+      .catch((error) => {
+        dispatch(markAsError(error.message));
+      });
+  }
+
+  async function fetchProductByCategory(category: string): Promise<void> {
+    dispatch(markAsLoading());
+
+    await fetch(`${baseUrl}/products/category/${category}`)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(populateProducts(data));
       })
       .catch((error) => {
         dispatch(markAsError(error.message));
@@ -45,6 +58,7 @@ export const useProduct = () => {
   return {
     fetchProducts,
     fetchProductByName,
+    fetchProductByCategory,
     isLoading,
     products,
     isError,

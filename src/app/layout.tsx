@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
           </main>
+          <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
         </body>
       </html>
     </Providers>

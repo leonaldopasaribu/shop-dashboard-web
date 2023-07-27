@@ -32,7 +32,7 @@ const productSlice = createSlice({
       state.isLoading = true;
       state.isError = false;
     },
-    populateData(
+    populateProducts(
       state,
       action: PayloadAction<FetchResponseProducts<Product[]>>
     ) {
@@ -51,7 +51,7 @@ const productSlice = createSlice({
   },
 });
 
-export const { markAsLoading, populateData, markAsError } =
+export const { markAsLoading, populateProducts, markAsError } =
   productSlice.actions;
 
 export default productSlice.reducer;
