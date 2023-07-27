@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 
 import {
   Table,
@@ -12,16 +12,25 @@ import {
 } from "@/shared/components/table";
 import { Loading } from "@/shared/components/loading";
 import { Pagination } from "@/shared/components/pagination";
+import { Input } from "@/shared/components/input";
 
 import { useProduct } from "@/hooks/products.hook";
 import { useCalculatePagination } from "@/hooks/pagination.hook";
-import { LIMIT } from "@/shared/constants/limit.constant";
+import { SearchInput } from "@/shared/components/search-input";
 
 export default function Products() {
   const [page, setPage] = useState<number>(1);
   const [skip, setSkip] = useState<number>(0);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const { fetchProducts, isLoading, products, total, limit } = useProduct();
+  const {
+    fetchProducts,
+    fetchProductByName,
+    isLoading,
+    products,
+    total,
+    limit,
+  } = useProduct();
 
   const paginationData = {
     totalProducts: total,
@@ -43,9 +52,14 @@ export default function Products() {
     setSkip(skip + limit);
   }
 
+  const handleSearch = (value: string): void => {
+    setSearchQuery(value);
+  };
+
   useEffect(() => {
     fetchProducts(skip);
-  }, [skip]);
+    fetchProductByName(searchQuery);
+  }, [searchQuery, skip]);
 
   if (isLoading) {
     return <Loading />;
@@ -53,7 +67,11 @@ export default function Products() {
 
   return (
     <div>
-      <Table className="w-full">
+      <div>
+        <SearchInput placeholder="Search Product" onSearch={handleSearch} />
+      </div>
+
+      <Table className="w-full mt-3">
         <TableHeader>
           <TableRow>
             <TableHead>No</TableHead>
@@ -78,7 +96,7 @@ export default function Products() {
         </TableBody>
       </Table>
 
-      <div className="mt-2">
+      <div className="mt-3">
         <Pagination
           currentPage={currentPage}
           totalPage={totalPage}
