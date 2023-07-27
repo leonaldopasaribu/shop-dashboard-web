@@ -11,13 +11,18 @@ import {
   TableRow,
 } from "@/shared/components/table";
 import { useProduct } from "@/hooks/products.hook";
+import { Loading } from "@/shared/components/loading";
 
 export default function Products() {
-  const { fetchProducts, products } = useProduct();
+  const { fetchProducts, isLoading, products } = useProduct();
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <Table className="w-full">

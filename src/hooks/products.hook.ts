@@ -15,9 +15,10 @@ export const useProduct = () => {
 
   const dispatch = useDispatch();
 
-  function fetchProducts(): void {
+  async function fetchProducts(): Promise<void> {
     dispatch(markAsLoading());
-    fetch("https://dummyjson.com/products")
+
+    await fetch("https://dummyjson.com/products")
       .then((response) => response.json())
       .then((data) => {
         dispatch(populateData(data));
