@@ -10,8 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/table";
-import { useProduct } from "@/hooks/products.hook";
 import { Loading } from "@/shared/components/loading";
+
+import { useProduct } from "@/hooks/products.hook";
 
 export default function Products() {
   const { fetchProducts, isLoading, products } = useProduct();
