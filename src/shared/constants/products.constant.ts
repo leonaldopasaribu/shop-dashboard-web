@@ -27,10 +27,12 @@ export const PRODUCTS: Product[] = [
   },
   {
     brand: "Oppo",
-    category: "smartphones",
+    category: "laptops",
     id: 4,
     price: 49,
     stock: 122,
     title: "Oppo A52",
   },
 ];
+
+

@@ -5,6 +5,7 @@ import { FetchResponseProducts } from "@/shared/models/response.model";
 
 interface BrandState {
   brands: string[];
+  data: any;
   isError: boolean;
   errorMessage: string;
 }
@@ -17,8 +18,25 @@ function getBrandByProducts(products: Product[]): string[] {
   return uniqueBrands;
 }
 
+function convertToTotal(
+  products: Product[]
+): { name: string; total: number }[] {
+  const categoryTotals: { [category: string]: number } = {};
+
+  products.forEach((product) => {
+    const { category } = product;
+    categoryTotals[category] = (categoryTotals[category] || 0) + 1;
+  });
+
+  return Object.entries(categoryTotals).map(([name, total]) => ({
+    name,
+    total,
+  }));
+}
+
 const initialState: BrandState = {
   brands: [],
+  data: [],
   isError: false,
   errorMessage: "",
 };
@@ -32,7 +50,7 @@ const brandSlice = createSlice({
       action: PayloadAction<FetchResponseProducts<Product[]>>
     ) {
       state.brands = getBrandByProducts(action.payload.products);
-      state.isError = false;
+      state.data = convertToTotal(action.payload.products);
     },
     markAsError(state, action: PayloadAction<string>) {
       state.isError = true;

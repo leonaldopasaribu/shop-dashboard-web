@@ -40,12 +40,12 @@ export default function Carts() {
 
   useEffect(() => {
     fetchCarts(skip);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skip]);
 
   useEffect(() => {
     fetchUsers();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
@@ -54,10 +54,10 @@ export default function Carts() {
 
   return (
     <div>
+      <h1 className="text-2xl font-bold mb-6">Carts</h1>
       <div>
         <CartsTable carts={carts} users={users} />
       </div>
-
       <div className="mt-3">
         <Pagination
           currentPage={currentPage}

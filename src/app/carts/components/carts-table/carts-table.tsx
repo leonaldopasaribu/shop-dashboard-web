@@ -39,7 +39,7 @@ export const CartsTable = ({ carts, users }: CartsTableProps) => {
   }
 
   return (
-    <Table className="w-full mt-3">
+    <Table className="w-full">
       <TableHeader>
         <TableRow>
           <TableHead>No</TableHead>

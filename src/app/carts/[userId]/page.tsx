@@ -52,12 +52,10 @@ export default function Carts() {
 
   return (
     <div>
-      <div>
-        <h2 className="font-bold text-lg">Cart {cartId}</h2>
-      </div>
+      <h1 className="text-2xl font-bold mb-6">Carts {cartId} </h1>
 
       <div className="mt-10">
-        <p>Details</p>
+        <p className="font-bold">Details</p>
         <div className="mt-3 w-full p-6 border border-gray-200 rounded-lg shadow bg-gray-100">
           <div className="grid grid-cols-2">
             <p>User: {getUserName(carts[0]?.userId)}</p>

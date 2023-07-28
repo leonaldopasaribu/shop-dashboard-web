@@ -83,22 +83,22 @@ export default function Products() {
 
   useEffect(() => {
     fetchProducts(skip);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skip]);
 
   useEffect(() => {
     fetchProductByName(searchQuery);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   useEffect(() => {
     fetchCategories();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchBrands();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
@@ -107,6 +107,7 @@ export default function Products() {
 
   return (
     <div>
+      <h1 className="text-2xl font-bold mb-6">Products</h1>
       <div className="flex justify-between">
         <ProductsSearch handleSearch={handleSearch} />
         <ProductFilter

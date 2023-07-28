@@ -7,7 +7,7 @@ import { markAsError, populateBrands } from "@/store/reducers/brand-reducer";
 export const useBrands = () => {
   const dispatch = useDispatch();
 
-  const { brands, isError, errorMessage } = useSelector(
+  const { brands, isError, errorMessage, data } = useSelector(
     (state: RootState) => state.brand
   );
 
@@ -29,5 +29,6 @@ export const useBrands = () => {
     brands,
     isError,
     errorMessage,
+    data,
   };
 };
