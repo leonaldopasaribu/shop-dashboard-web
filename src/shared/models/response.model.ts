@@ -4,3 +4,10 @@ export interface FetchResponseProducts<T> {
   skip: number;
   total: number;
 }
+
+export interface FetchResponseCarts<T> {
+  carts: T;
+  limit: number;
+  skip: number;
+  total: number;
+}

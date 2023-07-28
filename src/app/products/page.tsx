@@ -7,15 +7,13 @@ import { ProductsTable } from "./components/products-table";
 
 import { LoadingScreen } from "@/shared/components/loading-screen";
 import { Pagination } from "@/shared/components/pagination";
-import { Button } from "@/shared/components/button";
+import { ProductFilter } from "./components/products-filter/product-filter";
 
 import { useProduct } from "@/shared/services/use-product";
 import { useCalculatePagination } from "@/shared/services/use-pagination";
 
 import { useCategory } from "@/shared/services/use-product-category";
 import { useBrands } from "@/shared/services/use-product-brand";
-import { Product } from "@/shared/models/product.model";
-import { ProductFilter } from "./components/product-filter/product-filter";
 
 export default function Products() {
   const [page, setPage] = useState<number>(1);
