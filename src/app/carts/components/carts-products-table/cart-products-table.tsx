@@ -47,7 +47,7 @@ export const CartProductsTable = ({ products }: CartProductsTableProps) => {
               <TableCell>{formatCurrency(product.price)}</TableCell>
               <TableCell>
                 {formatCurrency(
-                  getTotalDiscount(product.total, product.discountedPrice)
+                  getTotalDiscount(product.total, product.discountedPrice ?? 0)
                 )}
               </TableCell>
               <TableCell>

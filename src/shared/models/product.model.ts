@@ -1,7 +1,7 @@
 export interface Product {
   brand: string;
   category: string;
-  discountedPrice: number;
+  discountedPrice?: number;
   id: number;
   price: number;
   stock: number;
