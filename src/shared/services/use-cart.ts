@@ -10,11 +10,11 @@ import {
 } from "@/store/reducers/carts.reducer";
 
 export const useCart = () => {
+  const dispatch = useDispatch();
+
   const { carts, isLoading, isError, errorMessage, total, limit } = useSelector(
     (state: RootState) => state.cart
   );
-
-  const dispatch = useDispatch();
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -31,8 +31,22 @@ export const useCart = () => {
       });
   }
 
+  async function fetchCartByUserId(userId: number): Promise<void> {
+    dispatch(markAsLoading());
+
+    await fetch(`${baseUrl}/carts/user/${userId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(populateCarts(data));
+      })
+      .catch((error) => {
+        dispatch(markAsError(error.message));
+      });
+  }
+
   return {
     fetchCarts,
+    fetchCartByUserId,
     isLoading,
     carts,
     isError,

@@ -11,10 +11,10 @@ import {
 } from "@/store/reducers/products-reducer";
 
 export const useProduct = () => {
+  const dispatch = useDispatch();
+
   const { products, isLoading, isError, errorMessage, total, limit } =
     useSelector((state: RootState) => state.product);
-
-  const dispatch = useDispatch();
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 

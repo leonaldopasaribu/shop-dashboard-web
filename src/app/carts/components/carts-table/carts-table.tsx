@@ -1,3 +1,5 @@
+import { useRouter } from "next/navigation";
+
 import {
   Table,
   TableHeader,
@@ -6,6 +8,7 @@ import {
   TableBody,
   TableCell,
 } from "@/shared/components/table";
+import { Button } from "@/shared/components/button";
 
 import { Cart } from "@/shared/models/cart.model";
 
@@ -16,16 +19,20 @@ interface CartsTableProps {
 }
 
 export const CartsTable = ({ carts }: CartsTableProps) => {
+  const router = useRouter();
+
+  function redirectToCartDetailPage(userId: number): void {
+    router.push(`/carts/${userId}`);
+  }
   return (
     <Table className="w-full mt-3">
       <TableHeader>
         <TableRow>
           <TableHead>No</TableHead>
           <TableHead>User</TableHead>
-          <TableHead>Total Product</TableHead>
-          <TableHead>Quantity</TableHead>
           <TableHead>Discount</TableHead>
-          <TableHead>Price</TableHead>
+          <TableHead>Total Price</TableHead>
+          <TableHead>Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -33,10 +40,15 @@ export const CartsTable = ({ carts }: CartsTableProps) => {
           <TableRow key={cart.id} className="capitalize">
             <TableCell>{cart.id}</TableCell>
             <TableCell className="font-medium">{cart.userId}</TableCell>
-            <TableCell>{cart.totalProducts}</TableCell>
-            <TableCell>{cart.totalQuantity}</TableCell>
+            <TableCell>
+              {formatCurrency(cart.total - cart.discountedTotal)}
+            </TableCell>
             <TableCell>{formatCurrency(cart.discountedTotal)}</TableCell>
-            <TableCell>{formatCurrency(cart.total)}</TableCell>
+            <TableCell>
+              <Button onClick={() => redirectToCartDetailPage(cart.userId)}>
+                View
+              </Button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

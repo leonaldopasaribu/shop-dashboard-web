@@ -5,11 +5,11 @@ import { RootState } from "@/store";
 import { markAsError, populateBrands } from "@/store/reducers/brand-reducer";
 
 export const useBrands = () => {
+  const dispatch = useDispatch();
+
   const { brands, isError, errorMessage } = useSelector(
     (state: RootState) => state.brand
   );
-
-  const dispatch = useDispatch();
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 

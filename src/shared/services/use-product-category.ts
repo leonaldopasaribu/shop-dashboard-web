@@ -8,11 +8,11 @@ import {
 } from "@/store/reducers/category-reducer";
 
 export const useCategory = () => {
+  const dispatch = useDispatch();
+
   const { categories, isError, errorMessage } = useSelector(
     (state: RootState) => state.category
   );
-
-  const dispatch = useDispatch();
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 

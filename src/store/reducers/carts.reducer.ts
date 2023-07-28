@@ -1,12 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { Product } from "@/shared/models/product.model";
-import {
-  FetchResponseCarts,
-  FetchResponseProducts,
-} from "@/shared/models/response.model";
-import { FETCH_LIMIT } from "@/shared/constants/limit.constant";
 import { Cart } from "@/shared/models/cart.model";
+import { FetchResponseCarts } from "@/shared/models/response.model";
+
+import { FETCH_LIMIT } from "@/shared/constants/limit.constant";
 
 interface ProductState {
   carts: Cart[];
