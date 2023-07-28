@@ -40,10 +40,12 @@ export default function Carts() {
 
   useEffect(() => {
     fetchCarts(skip);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skip]);
 
   useEffect(() => {
     fetchUsers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {

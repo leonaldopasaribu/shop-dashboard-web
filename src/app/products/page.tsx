@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -84,18 +83,22 @@ export default function Products() {
 
   useEffect(() => {
     fetchProducts(skip);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skip]);
 
   useEffect(() => {
     fetchProductByName(searchQuery);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   useEffect(() => {
     fetchCategories();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchBrands();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
