@@ -32,7 +32,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <span className="sr-only">Open sidebar</span>
               <svg
                 className="w-6 h-6"
-                aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
