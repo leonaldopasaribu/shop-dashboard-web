@@ -1,13 +1,17 @@
-export interface FetchResponseProducts<T> {
-  products: T;
+interface PaginationInfo  {
   limit: number;
   skip: number;
   total: number;
 }
 
-export interface FetchResponseCarts<T> {
+export interface FetchResponseProducts<T> extends PaginationInfo  {
+  products: T;
+}
+
+export interface FetchResponseCarts<T> extends PaginationInfo  {
   carts: T;
-  limit: number;
-  skip: number;
-  total: number;
+}
+
+export interface FetchResponseUsers<T> extends PaginationInfo  {
+  users: T;
 }
