@@ -6,7 +6,7 @@ interface ProductSearchProps {
 
 export const ProductsSearch = ({ handleSearch }: ProductSearchProps) => {
   return (
-    <div className="relative">
+    <div className="relative max-w-[335px]">
       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
         <svg
           className="w-4 h-4 text-gray-500 dark:text-gray-400"

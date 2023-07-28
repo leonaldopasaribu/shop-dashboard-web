@@ -6,6 +6,7 @@ import "./globals.css";
 
 import { Providers } from "@/providers";
 
+import { Header } from "@/shared/components/header";
 import { Sidebar } from "@/shared/components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,10 +20,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <Providers>
       <html lang="en">
         <body className={inter.className}>
+          <Header />
+
           <main>
             <Sidebar />
 
-            <div className="p-4 sm:ml-64">
+            <div className="p-4 lg:ml-64">
               <div className="p-4 rounded-lg bg-white">
                 <div className="grid mb-4 ">{children}</div>
               </div>

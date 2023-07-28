@@ -107,8 +107,8 @@ export default function Products() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Products</h1>
-      <div className="flex justify-between">
+      <h1 className="text-2xl font-bold mb-6 ">Products</h1>
+      <div className="flex flex-col gap-3 justify-between lg:flex-row">
         <ProductsSearch handleSearch={handleSearch} />
         <ProductFilter
           categories={categories}
