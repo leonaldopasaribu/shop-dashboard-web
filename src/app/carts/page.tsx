@@ -8,6 +8,7 @@ import { LoadingScreen } from "@/shared/components/loading-screen";
 import { Pagination } from "@/shared/components/pagination";
 
 import { useCart } from "@/shared/services/use-cart";
+import { useUser } from "@/shared/services/use-user";
 import { useCalculatePagination } from "@/shared/services/use-pagination";
 
 export default function Carts() {
@@ -15,6 +16,7 @@ export default function Carts() {
   const [skip, setSkip] = useState<number>(0);
 
   const { fetchCarts, carts, isLoading, total, limit } = useCart();
+  const { fetchUsers, users } = useUser();
 
   const paginationData = {
     totalProducts: total,
@@ -40,6 +42,10 @@ export default function Carts() {
     fetchCarts(skip);
   }, [skip]);
 
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -47,7 +53,7 @@ export default function Carts() {
   return (
     <div>
       <div>
-        <CartsTable carts={carts} />
+        <CartsTable carts={carts} users={users} />
       </div>
 
       <div className="mt-3">

@@ -39,7 +39,7 @@ export const CartProductsTable = ({ products }: CartProductsTableProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {products.map((product, id) => (
+          {products?.map((product, id) => (
             <TableRow key={product.id} className="capitalize">
               <TableCell>{id + 1}</TableCell>
               <TableCell className="font-medium">{product.title}</TableCell>
