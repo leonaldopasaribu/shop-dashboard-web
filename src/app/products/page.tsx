@@ -28,6 +28,7 @@ export default function Products() {
     fetchProducts,
     fetchProductByName,
     fetchProductByCategory,
+    fetchProductByBrand,
     isLoading,
     products,
     total,
@@ -75,10 +76,10 @@ export default function Products() {
     setIsToggleDropdownFilterCategory(!isToggleDropdownFilterCategory);
   }
 
-  function filterProductByBrand(category: string): void {
-    fetchProductByCategory(category);
+  function filterProductByBrand(brand: string): void {
+    fetchProductByBrand(brand);
 
-    setIsToggleDropdownFilterCategory(!isToggleDropdownFilterBrand);
+    setIsToggleDropdownFilterBrand(!isToggleDropdownFilterBrand);
   }
 
   useEffect(() => {
@@ -121,8 +122,7 @@ export default function Products() {
           filterProductByBrand={filterProductByBrand}
         />
       </div>
-
-      <div className="flex">
+      <div className="overflow-auto max-w-[334px] sm:max-w-full">
         <ProductsTable products={products} />
       </div>
 

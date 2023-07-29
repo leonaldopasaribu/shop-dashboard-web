@@ -19,10 +19,10 @@ export const useCategory = () => {
   async function fetchCategories(): Promise<void> {
     await fetch(`${baseUrl}/products/categories`)
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: string[]) => {
         dispatch(populateCategories(data));
       })
-      .catch((error) => {
+      .catch((error: ErrorEvent) => {
         dispatch(markAsError(error.message));
       });
   }

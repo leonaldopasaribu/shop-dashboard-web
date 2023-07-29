@@ -43,10 +43,10 @@ export const ProductFilter = ({
           }`}
         >
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 capitalize">
-            {brands.map((brand, id) => (
+            {brands.map((brand) => (
               <li
-                key={id}
-                onClick={() => filterProductByCategory(brand)}
+                key={brand}
+                onClick={() => filterProductByBrand(brand)}
                 className="block px-4 py-2 hover:bg-gray-100"
               >
                 {brand}
@@ -54,7 +54,7 @@ export const ProductFilter = ({
             ))}
           </ul>
         </div>
-      </div>{" "}
+      </div>
       <div>
         <Button variant="outline" onClick={toggleDropdownFilterCategory}>
           Filter By Category
@@ -73,9 +73,9 @@ export const ProductFilter = ({
           }`}
         >
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 capitalize">
-            {categories.map((category, id) => (
+            {categories.map((category) => (
               <li
-                key={id}
+                key={category}
                 onClick={() => filterProductByCategory(category)}
                 className="block px-4 py-2 hover:bg-gray-100"
               >
