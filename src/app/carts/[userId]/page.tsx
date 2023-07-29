@@ -84,7 +84,7 @@ export default function Carts() {
         </div>
       </div>
 
-      <div>
+      <div className="overflow-auto max-w-[334px] sm:max-w-full">
         <CartProductsTable products={products} />
       </div>
     </div>

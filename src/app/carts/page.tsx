@@ -55,7 +55,7 @@ export default function Carts() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-6">Carts</h1>
-      <div>
+      <div className="overflow-auto max-w-[334px] sm:max-w-full">
         <CartsTable carts={carts} users={users} />
       </div>
       <div className="mt-3">
