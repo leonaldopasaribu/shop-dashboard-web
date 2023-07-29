@@ -1,4 +1,4 @@
-import { mergeClassNames } from "./merge-class-names";
+import { mergeClassNames } from "./merge-class-names.util.";
 
 describe("mergeClassNames", () => {
   it("should return empty className when mergeClassNames is call without paramater", () => {

@@ -1,6 +1,10 @@
 import { formatCurrency } from "./format-currency.util";
 
 describe("formatCurrency", () => {
+  it("should create formatCurrency", () => {
+    expect(formatCurrency).toBeTruthy();
+  });
+
   it("should return $1,000.00 when formatCurrency is called with argument 1000", () => {
     const stubProps = 1000;
     const expectedResult = "$1,000.00";
@@ -9,11 +13,6 @@ describe("formatCurrency", () => {
 
     expect(result).toBe(expectedResult);
   });
-
-  it('should create formatCurrency', () => {
-    expect(formatCurrency).toBeTruthy();
-  });
-
 
   it("should return -$500.00 when formatCurrency is called with argument -500", () => {
     const stubProps = -500;

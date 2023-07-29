@@ -7,7 +7,6 @@ import { RootState } from "@/store";
 
 import { markAsError, populateBrands } from "@/store/reducers/brand-reducer";
 
-
 export const useBrands = () => {
   const dispatch = useDispatch();
 

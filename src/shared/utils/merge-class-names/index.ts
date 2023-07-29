@@ -1,1 +1,1 @@
-export { mergeClassNames } from "./merge-class-names";
+export { mergeClassNames } from "./merge-class-names.util.";
