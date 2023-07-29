@@ -1,8 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 
+import { Product } from "../models/product.model";
+import { FetchResponseProducts } from "../models/response.model";
+
 import { RootState } from "@/store";
 
 import { markAsError, populateBrands } from "@/store/reducers/brand-reducer";
+
 
 export const useBrands = () => {
   const dispatch = useDispatch();
@@ -16,10 +20,10 @@ export const useBrands = () => {
   async function fetchBrands(): Promise<void> {
     await fetch(`${baseUrl}/products`)
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: FetchResponseProducts<Product[]>) => {
         dispatch(populateBrands(data));
       })
-      .catch((error) => {
+      .catch((error: ErrorEvent) => {
         dispatch(markAsError(error.message));
       });
   }

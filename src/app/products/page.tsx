@@ -28,6 +28,7 @@ export default function Products() {
     fetchProducts,
     fetchProductByName,
     fetchProductByCategory,
+    fetchProductByBrand,
     isLoading,
     products,
     total,
@@ -75,10 +76,10 @@ export default function Products() {
     setIsToggleDropdownFilterCategory(!isToggleDropdownFilterCategory);
   }
 
-  function filterProductByBrand(category: string): void {
-    fetchProductByCategory(category);
+  function filterProductByBrand(brand: string): void {
+    fetchProductByBrand(brand);
 
-    setIsToggleDropdownFilterCategory(!isToggleDropdownFilterBrand);
+    setIsToggleDropdownFilterBrand(!isToggleDropdownFilterBrand);
   }
 
   useEffect(() => {
