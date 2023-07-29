@@ -29,9 +29,9 @@ export const ProductsTable = ({ products }: ProductsTableProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {products.map((product) => (
+        {products.map((product, id) => (
           <TableRow key={product.id} className="capitalize">
-            <TableCell>{product.id}</TableCell>
+            <TableCell>{id + 1}</TableCell>
             <TableCell className="font-medium">{product.title}</TableCell>
             <TableCell>{product.brand}</TableCell>
             <TableCell>{formatCurrency(product.price)}</TableCell>
