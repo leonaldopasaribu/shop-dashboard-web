@@ -7,8 +7,8 @@ interface ProductFilterProps {
   brands: string[];
   isToggleDropdownFilterCategory: boolean;
   isToggleDropdownFilterBrand: boolean;
-  toggleDropdownFilterCategory: () => void;
-  toggleDropdownFilterBrand: () => void;
+  handleClickButtonFilterBrand: () => void;
+  handleClickButtonFilterCategory: () => void;
   filterProductByCategory: (value: string) => void;
   filterProductByBrand: (value: string) => void;
 }
@@ -18,15 +18,15 @@ export const ProductFilter = ({
   brands,
   isToggleDropdownFilterCategory,
   isToggleDropdownFilterBrand,
-  toggleDropdownFilterCategory,
-  toggleDropdownFilterBrand,
+  handleClickButtonFilterBrand,
+  handleClickButtonFilterCategory,
   filterProductByCategory,
   filterProductByBrand,
 }: ProductFilterProps) => {
   return (
     <div className="flex gap-2">
       <div>
-        <Button variant="outline" onClick={toggleDropdownFilterBrand}>
+        <Button variant="outline" onClick={handleClickButtonFilterBrand}>
           Filter By Brand
           <Image
             className="w-2.5 h-2.5 ml-2.5"
@@ -56,7 +56,7 @@ export const ProductFilter = ({
         </div>
       </div>
       <div>
-        <Button variant="outline" onClick={toggleDropdownFilterCategory}>
+        <Button variant="outline" onClick={handleClickButtonFilterCategory}>
           Filter By Category
           <Image
             className="w-2.5 h-2.5 ml-2.5"

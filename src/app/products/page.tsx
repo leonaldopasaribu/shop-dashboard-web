@@ -62,11 +62,21 @@ export default function Products() {
     setSearchQuery(value);
   }
 
-  function toggleDropdownFilterCategory(): void {
-    setIsToggleDropdownFilterCategory(!isToggleDropdownFilterCategory);
+  function handleClickButtonFilterBrand(): void {
+    setIsToggleDropdownFilterBrand(!isToggleDropdownFilterBrand);
+
+    setIsToggleDropdownFilterCategory(false);
   }
 
-  function toggleDropdownFilterBrand(): void {
+  function handleClickButtonFilterCategory(): void {
+    setIsToggleDropdownFilterCategory(!isToggleDropdownFilterCategory);
+
+    setIsToggleDropdownFilterBrand(false);
+  }
+
+  function filterProductByBrand(brand: string): void {
+    fetchProductByBrand(brand);
+
     setIsToggleDropdownFilterBrand(!isToggleDropdownFilterBrand);
   }
 
@@ -74,12 +84,6 @@ export default function Products() {
     fetchProductByCategory(category);
 
     setIsToggleDropdownFilterCategory(!isToggleDropdownFilterCategory);
-  }
-
-  function filterProductByBrand(brand: string): void {
-    fetchProductByBrand(brand);
-
-    setIsToggleDropdownFilterBrand(!isToggleDropdownFilterBrand);
   }
 
   useEffect(() => {
@@ -116,8 +120,8 @@ export default function Products() {
           brands={brands}
           isToggleDropdownFilterCategory={isToggleDropdownFilterCategory}
           isToggleDropdownFilterBrand={isToggleDropdownFilterBrand}
-          toggleDropdownFilterCategory={toggleDropdownFilterCategory}
-          toggleDropdownFilterBrand={toggleDropdownFilterBrand}
+          handleClickButtonFilterBrand={handleClickButtonFilterBrand}
+          handleClickButtonFilterCategory={handleClickButtonFilterCategory}
           filterProductByCategory={filterProductByCategory}
           filterProductByBrand={filterProductByBrand}
         />
